@@ -10,24 +10,26 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/login_margin_horizontal"
+        android:layout_marginVertical="@dimen/login_margin_vertical"
         android:ems="10"
         android:hint="@string/login_field_1"
         android:inputType="textPersonName"
-        android:layout_marginHorizontal="@dimen/login_margin_horizontal"
-        android:layout_marginVertical="@dimen/login_margin_vertical"
+        android:minHeight="@dimen/min_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/login_margin_horizontal"
+        android:layout_marginVertical="@dimen/login_margin_vertical"
         android:ems="10"
         android:hint="@string/login_field_2"
         android:inputType="textPassword"
-        android:layout_marginHorizontal="@dimen/login_margin_horizontal"
-        android:layout_marginVertical="@dimen/login_margin_vertical"
+        android:minHeight="@dimen/min_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
@@ -42,4 +44,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="@dimen/logo_size"
+        android:layout_height="@dimen/logo_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

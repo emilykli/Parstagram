@@ -3,8 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/miFeed"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="Feed"
+        app:showAsAction="always" />
+
+    <item
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:id="@+id/miLogout"
         android:title="Logout"
         app:showAsAction="always" />
+
+
 </menu>

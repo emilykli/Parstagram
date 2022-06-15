@@ -3,11 +3,14 @@ package com.example.parstagram;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
 
+import com.bumptech.glide.Glide;
+import com.example.parstagram.Posting.PostActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -18,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        ivLogo = findViewById(R.id.ivLogo);
+        Glide.with(this).load(R.drawable.icon).into(ivLogo);
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goMainActivity() {
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, PostActivity.class);
         startActivity(i);
         finish();
     }

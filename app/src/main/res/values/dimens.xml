@@ -2,4 +2,9 @@
 <resources>
     <dimen name="login_margin_horizontal">15dp</dimen>
     <dimen name="login_margin_vertical">5dp</dimen>
+    <dimen name="post_margin">10dp</dimen>
+    <dimen name="post_username_vertical_margin">15dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="logo_size">50dp</dimen>
+    <dimen name="min_size">48dp</dimen>
 </resources>

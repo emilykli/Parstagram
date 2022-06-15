@@ -3,4 +3,10 @@
     <string name="login_field_1">Username</string>
     <string name="login_field_2">Password</string>
     <string name="login_button">Log In</string>
+    <string name="post_img_desc">image associated with post</string>
+    <string name="pic_button">Take Picture</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="sample_username">berry</string>
+    <string name="sample_description">me when...</string>
 </resources>
