@@ -25,6 +25,7 @@ public class FeedActivity extends AppCompatActivity {
     protected List<Post> allPosts;
 
     private SwipeRefreshLayout swipeContainer;
+    private EndlessRecyclerViewScrollListener scrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,21 @@ public class FeedActivity extends AppCompatActivity {
 
         allPosts = new ArrayList<>();
         adapter = new PostsAdapter(this, allPosts);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
         rvFeed.setAdapter(adapter);
-        rvFeed.setLayoutManager(new LinearLayoutManager(this));
+        rvFeed.setLayoutManager(linearLayoutManager);
+
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                getMorePosts();
+                adapter.notifyItemInserted(page * 20);
+            }
+        };
+
+        rvFeed.addOnScrollListener(scrollListener);
+
         queryPosts();
     }
 
@@ -69,11 +82,33 @@ public class FeedActivity extends AppCompatActivity {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
 
-                // save received posts to list and notify adapter of new data
                 adapter.clear();
                 adapter.addAll(posts);
                 adapter.notifyDataSetChanged();
                 swipeContainer.setRefreshing(false);
+                scrollListener.resetState();
+            }
+        });
+    }
+
+    private void getMorePosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.whereLessThan("createdAt", allPosts.get(allPosts.size() - 1).getCreatedAt());
+        query.setLimit(20);
+        query.addDescendingOrder("createdAt");
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Post post : posts) {
+                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                }
+
+                allPosts.addAll(posts);
             }
         });
     }
