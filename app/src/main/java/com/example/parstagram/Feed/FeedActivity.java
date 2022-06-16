@@ -56,8 +56,9 @@ public class FeedActivity extends AppCompatActivity {
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                Log.i("mmmm", "hello");
                 getMorePosts();
-                adapter.notifyItemInserted(page * 20);
+//                adapter.notifyItemInserted(page * 20);
             }
         };
 
@@ -105,10 +106,11 @@ public class FeedActivity extends AppCompatActivity {
                     return;
                 }
                 for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                    Log.i(TAG, "Post:2 " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                    allPosts.add(post);
+                    adapter.notifyItemInserted(allPosts.size() - 1);
                 }
 
-                allPosts.addAll(posts);
             }
         });
     }
