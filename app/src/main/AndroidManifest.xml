@@ -26,6 +26,9 @@
         android:theme="@style/Theme.Parstagram"
         tools:targetApi="31">
         <activity
+            android:name=".Access.SignupActivity"
+            android:exported="false" />
+        <activity
             android:name=".Feed.DetailActivity"
             android:exported="false" />
         <activity
@@ -43,7 +46,7 @@
         </provider>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".Access.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

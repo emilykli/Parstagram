@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Access.LoginActivity">
+    tools:context=".Access.SignupActivity">
+
     <LinearLayout
         android:id="@+id/llLogoText"
         android:layout_width="wrap_content"
@@ -25,13 +26,13 @@
             app:srcCompat="@drawable/icon" />
 
         <TextView
-            android:id="@+id/tvLogin"
+            android:id="@+id/tvSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_button"
+            android:text="@string/sign_up"
             android:textSize="@dimen/access_text_size"
             app:layout_constraintBottom_toTopOf="@+id/etUsername"
-             />
+            />
 
     </LinearLayout>
 
@@ -39,72 +40,38 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/access_margin_horizontal"
-        android:layout_marginVertical="@dimen/access_margin_vertical"
         android:ems="10"
         android:hint="@string/access_field_1"
         android:inputType="textPersonName"
-        android:minHeight="@dimen/min_size"
+        android:layout_marginHorizontal="@dimen/access_margin_horizontal"
+        android:layout_marginVertical="@dimen/access_margin_vertical"
+        app:layout_constraintTop_toBottomOf="@id/llLogoText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llLogoText" />
+        tools:layout_editor_absoluteY="98dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/access_margin_horizontal"
-        android:layout_marginVertical="@dimen/access_margin_vertical"
         android:ems="10"
         android:hint="@string/access_field_2"
-        android:inputType="textPassword"
-        android:minHeight="@dimen/min_size"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="@dimen/access_margin_horizontal"
+        android:layout_marginVertical="@dimen/access_margin_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/access_margin_horizontal"
         android:layout_marginVertical="@dimen/access_margin_vertical"
-        android:text="@string/login_button"
+        android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
-    <LinearLayout
-        android:id="@+id/llText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin">
-
-        <TextView
-            android:id="@+id/tvSignupText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signup_string"
-            android:layout_margin="@dimen/signup_words_margin"
-            />
-
-        <TextView
-            android:id="@+id/tvSignupLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signup_link"
-            android:layout_margin="@dimen/signup_words_margin"
-            android:textColor="@color/blue"
-            android:clickable="true"
-            />
-
-    </LinearLayout>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

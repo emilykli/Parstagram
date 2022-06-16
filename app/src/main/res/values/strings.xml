@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Parstagram</string>
-    <string name="login_field_1">Username</string>
-    <string name="login_field_2">Password</string>
+    <string name="access_field_1">Username</string>
+    <string name="access_field_2">Password</string>
     <string name="login_button">Log In</string>
+    <string name="signup_string">New to Parstagram?</string>
+    <string name="signup_link">Sign Up</string>
+
+    <string name="sign_up">Sign Up</string>
+
     <string name="post_img_desc">image associated with post</string>
     <string name="pic_button">Take Picture</string>
     <string name="description">Description</string>

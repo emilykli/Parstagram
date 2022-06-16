@@ -6,9 +6,10 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1378326416015625" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.1609375" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19679718017578127" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1580547112462006" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.146875" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.1580547112462006" />
         <entry key="app/src/main/res/layout/item_post.xml" value="0.15989583333333332" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1609375" />
         <entry key="app/src/main/res/xml/fileprovider.xml" value="0.15989583333333332" />

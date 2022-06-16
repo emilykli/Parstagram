@@ -1,51 +1,76 @@
-package com.example.parstagram;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.parstagram.Access;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.parstagram.Posting.PostActivity;
+import com.example.parstagram.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
-public class LoginActivity extends AppCompatActivity {
-    public static final String TAG = "LoginActivity";
+public class SignupActivity extends AppCompatActivity {
+    public static final String TAG = "SignupActivity";
 
     private EditText etUsername;
     private EditText etPassword;
-    private Button btnLogin;
+    private Button btnSignup;
     private ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        if(ParseUser.getCurrentUser() != null){
-            goMainActivity();
-        }
+        setContentView(R.layout.activity_signup);
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        btnSignup = findViewById(R.id.btnSignup);
         ivLogo = findViewById(R.id.ivLogo);
-        Glide.with(this).load(R.drawable.icon).into(ivLogo);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick login button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                loginUser(username, password);
+                signupUser(username, password);
             }
         });
+    }
+
+    private void signupUser(String username, String password) {
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+
+        user.signUpInBackground(new SignUpCallback() {
+
+            @Override
+            public void done(com.parse.ParseException e) {
+                if (e == null) {
+                    goPostActivity();
+                } else {
+                    Log.e(TAG, "signup issue", e);
+                }
+            }
+
+        });
+
+        loginUser(username, password);
+    }
+
+    private void goPostActivity() {
+        Intent i = new Intent(this, PostActivity.class);
+        startActivity(i);
+        finish();
     }
 
     private void loginUser(String username, String password) {
@@ -60,16 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 else {
-                    goMainActivity();
-                    Toast.makeText(LoginActivity.this, "login success!", Toast.LENGTH_SHORT).show();
+                    goPostActivity();
                 }
             }
         });
     }
 
-    private void goMainActivity() {
-        Intent i = new Intent(this, PostActivity.class);
-        startActivity(i);
-        finish();
-    }
 }

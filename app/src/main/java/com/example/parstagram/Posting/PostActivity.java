@@ -22,11 +22,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.parstagram.Feed.FeedActivity;
-import com.example.parstagram.LoginActivity;
+import com.example.parstagram.Access.LoginActivity;
 import com.example.parstagram.R;
 import com.parse.FindCallback;
 import com.parse.LogOutCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
@@ -218,7 +217,6 @@ public class PostActivity extends AppCompatActivity {
                     }
                     else {
                         goLoginActivity();
-                        Toast.makeText(PostActivity.this, "logout success!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
