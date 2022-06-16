@@ -1,6 +1,7 @@
 package com.example.parstagram.Feed;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = posts.get(position);
+        holder.itemView.setTag(post);
         holder.bind(post);
     }
 
@@ -45,7 +47,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         return posts.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView tvUsername;
         private ImageView ivPostImage;
@@ -56,6 +58,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivPostImage = itemView.findViewById(R.id.ivPostImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Post post) {
@@ -64,6 +68,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ParseFile image = post.getImage();
             if(image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivPostImage);
+            }
+        }
+
+        @Override
+        public void onClick(View view) {
+            final Post post = (Post) view.getTag();
+            if (post != null) {
+                Intent i = new Intent(context, DetailActivity.class);
+                i.putExtra("post", post);
+                context.startActivity(i);
             }
         }
     }

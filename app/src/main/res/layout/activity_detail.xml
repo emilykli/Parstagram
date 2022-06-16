@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".Feed.DetailActivity">
 
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/post_margin"
+        android:layout_marginVertical="@dimen/post_username_vertical_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/sample_username"/>
+
+    <ImageView
+        android:id="@+id/ivPostImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_margin="@dimen/post_margin"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+        app:srcCompat="@drawable/balls" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/post_margin"
+        app:layout_constraintTop_toBottomOf="@id/ivPostImage"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/sample_description"
+        />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/post_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        tools:text="@string/sample_time"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
