@@ -31,9 +31,9 @@
         <activity
             android:name=".Feed.DetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".Feed.FeedActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Feed.FeedActivity"-->
+<!--            android:exported="false" />-->
 
         <provider
             android:name="androidx.core.content.FileProvider"

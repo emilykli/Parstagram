@@ -15,4 +15,6 @@
     <string name="sample_username">berry</string>
     <string name="sample_description">me when...</string>
     <string name="sample_time">July 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
