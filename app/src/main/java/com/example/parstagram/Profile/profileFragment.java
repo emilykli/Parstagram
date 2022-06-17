@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.parstagram.Feed.PostsAdapter;
 import com.example.parstagram.Posting.Post;
 import com.example.parstagram.R;
@@ -29,7 +31,8 @@ public class profileFragment extends Fragment {
 
     private RecyclerView rvGrid;
     private TextView tvUsername;
-    private PostsAdapter profileAdapter;
+    private ImageView ivProfilePic;
+    private profilePostsAdapter profileAdapter;
     public List<Post> profilePosts;
 
     public profileFragment() {}
@@ -47,8 +50,9 @@ public class profileFragment extends Fragment {
 
         rvGrid = view.findViewById(R.id.rvGrid);
         tvUsername = view.findViewById(R.id.tvUsername);
+        ivProfilePic = view.findViewById(R.id.ivProfilePic);
         profilePosts = new ArrayList<>();
-        profileAdapter = new PostsAdapter(getContext(), profilePosts);
+        profileAdapter = new profilePostsAdapter(getContext(), profilePosts);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
 
@@ -56,6 +60,8 @@ public class profileFragment extends Fragment {
         rvGrid.setLayoutManager(gridLayoutManager);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
+        Glide.with(getContext()).load(R.drawable.default_pfp).circleCrop().into(ivProfilePic);
+        profileAdapter.notifyDataSetChanged();
         queryPosts();
     }
 

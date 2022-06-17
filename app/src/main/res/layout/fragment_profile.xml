@@ -9,14 +9,29 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginVertical="@dimen/profile_vertical_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/sample_username"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivProfilePic"
+        tools:text="@string/sample_username" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/profile_vertical_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="@dimen/pfp_size"
+        android:layout_height="@dimen/pfp_size"
+        android:layout_margin="@dimen/post_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

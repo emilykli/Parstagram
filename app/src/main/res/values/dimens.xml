@@ -14,4 +14,8 @@
     <dimen name="post_username_vertical_margin">15dp</dimen>
     <dimen name="zero">0dp</dimen>
     <dimen name="min_size">48dp</dimen>
+
+    <dimen name="gallery_margin">1dp</dimen>
+    <dimen name="pfp_size">100dp</dimen>
+    <dimen name="profile_vertical_margin">20dp</dimen>
 </resources>

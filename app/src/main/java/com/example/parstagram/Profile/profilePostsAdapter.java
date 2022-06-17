@@ -2,6 +2,7 @@ package com.example.parstagram.Profile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.example.parstagram.Feed.DetailActivity;
 import com.example.parstagram.Posting.Post;
 import com.example.parstagram.R;
@@ -32,7 +34,7 @@ public class profilePostsAdapter extends RecyclerView.Adapter<profilePostsAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_profile_gallery, parent, false);
         return new ViewHolder(view);
     }
 
@@ -50,25 +52,19 @@ public class profilePostsAdapter extends RecyclerView.Adapter<profilePostsAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private TextView tvUsername;
-        private ImageView ivPostImage;
-        private TextView tvDescription;
+        private ImageView ivProfileGallery;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
-            ivPostImage = itemView.findViewById(R.id.ivPostImage);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfileGallery = itemView.findViewById(R.id.ivProfileGallery);
 
             itemView.setOnClickListener(this);
         }
 
         public void bind(Post post) {
-            tvDescription.setText("");
-            tvUsername.setText("");
             ParseFile image = post.getImage();
             if(image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivPostImage);
+                Glide.with(context).load(image.getUrl()).override(220, 220).into(ivProfileGallery);
             }
         }
 
