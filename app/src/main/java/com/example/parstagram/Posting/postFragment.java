@@ -188,7 +188,7 @@ public class postFragment extends Fragment {
         });
     }
 
-    private void queryPosts() {
+    public void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.findInBackground(new FindCallback<Post>() {

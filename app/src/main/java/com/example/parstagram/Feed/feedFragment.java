@@ -26,11 +26,11 @@ import java.util.List;
 public class feedFragment extends Fragment {
     public static final String TAG = "feedFragment";
     private RecyclerView rvFeed;
-    protected PostsAdapter adapter;
-    protected List<Post> allPosts;
+    public PostsAdapter adapter;
+    public List<Post> allPosts;
 
-    private SwipeRefreshLayout swipeContainer;
-    private EndlessRecyclerViewScrollListener scrollListener;
+    public SwipeRefreshLayout swipeContainer;
+    public EndlessRecyclerViewScrollListener scrollListener;
 
     public feedFragment() {
         // Required empty public constructor
@@ -83,7 +83,7 @@ public class feedFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts() {
+    public void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);

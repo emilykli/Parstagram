@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.parstagram.Access.LoginActivity;
 import com.example.parstagram.Feed.feedFragment;
 import com.example.parstagram.Posting.postFragment;
+import com.example.parstagram.Profile.profileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     // TODO: update profile fragment
                     case R.id.miProfile:
-                        fragment = new postFragment();
+                        fragment = new profileFragment();
                         break;
                     case R.id.miPost:
                         fragment = new postFragment();

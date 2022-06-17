@@ -26,7 +26,7 @@ The following **stretch** features are implemented:
 - [x] User should switch between different tabs using fragments and a Bottom Navigation View.
     - [x] Feed Tab (to view all posts from all users)
     - [x] Capture Tab (to make a new post using the Camera and Photo Gallery)
-    - [ ] Profile Tab (to view only the current user's posts, in a grid)
+    - [x] Profile Tab (to view only the current user's posts, in a grid)
 - [x] Show the username and creation time for each post
 - User Profiles:
     - [ ] Allow the logged in user to add a profile photo
