@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.parstagram.Posting.PostActivity;
+import com.example.parstagram.MainActivity;
 import com.example.parstagram.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -68,7 +67,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void goPostActivity() {
-        Intent i = new Intent(this, PostActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
     }

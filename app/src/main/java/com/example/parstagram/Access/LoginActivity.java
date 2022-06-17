@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.bumptech.glide.Glide;
-import com.example.parstagram.Posting.PostActivity;
+import com.example.parstagram.MainActivity;
 import com.example.parstagram.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goPostActivity() {
-        Intent i = new Intent(this, PostActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
     }

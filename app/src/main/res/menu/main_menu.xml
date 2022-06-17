@@ -4,9 +4,11 @@
 
 
     <item
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/logout"
         android:id="@+id/miLogout"
         android:title="Logout"
+        android:iconTint="@color/white"
+        app:iconTint="@color/white"
         app:showAsAction="always" />
 
 

@@ -1,4 +1,4 @@
-package com.example.parstagram.Posting;
+package com.example.parstagram;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,13 +13,13 @@ import android.view.MenuItem;
 
 import com.example.parstagram.Access.LoginActivity;
 import com.example.parstagram.Feed.feedFragment;
-import com.example.parstagram.R;
+import com.example.parstagram.Posting.postFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class PostActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     public static final String TAG = "PostActivity";
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
@@ -30,7 +30,7 @@ public class PostActivity extends AppCompatActivity {
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
@@ -39,16 +39,16 @@ public class PostActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
-                    // TODO: update fragment shit
+                    // TODO: update profile fragment
                     case R.id.miProfile:
                         fragment = new postFragment();
                         break;
-                    case R.id.miFeed:
-                        fragment = new feedFragment();
-                        break;
                     case R.id.miPost:
-                    default:
                         fragment = new postFragment();
+                        break;
+                    case R.id.miFeed:
+                    default:
+                        fragment = new feedFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
@@ -56,7 +56,7 @@ public class PostActivity extends AppCompatActivity {
 
             }
         });
-        bottomNavigationView.setSelectedItemId(R.id.miPost);
+        bottomNavigationView.setSelectedItemId(R.id.miFeed);
 
 
 //        queryPosts();
