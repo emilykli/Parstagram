@@ -83,7 +83,7 @@ public class feedFragment extends Fragment {
         queryPosts();
     }
 
-    public void queryPosts() {
+    protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);
