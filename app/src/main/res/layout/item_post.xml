@@ -6,16 +6,35 @@
     android:layout_height="wrap_content"
     android:clickable="true">
 
+    <LinearLayout
+        android:id="@+id/llProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/light_grey"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <ImageView
+        android:id="@+id/ivProfilePicture"
+        android:layout_width="@dimen/post_pfp_size"
+        android:layout_height="@dimen/post_pfp_size"
+        android:layout_margin="@dimen/post_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/balls"/>
+
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginHorizontal="@dimen/post_margin"
         android:layout_marginVertical="@dimen/post_username_vertical_margin"
-        tools:text="@string/sample_username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivProfilePicture"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/sample_username" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -23,8 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/post_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername"
-        app:srcCompat="@drawable/balls" />
+        app:layout_constraintTop_toBottomOf="@id/llProfile"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -34,6 +53,18 @@
         tools:text="@string/sample_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:layout_marginHorizontal="@dimen/post_margin"
+        android:paddingBottom="@dimen/post_bottom_padding"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/sample_time"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

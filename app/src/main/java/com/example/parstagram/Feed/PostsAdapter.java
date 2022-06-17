@@ -2,6 +2,7 @@ package com.example.parstagram.Feed;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.parstagram.Posting.Post;
 import com.example.parstagram.R;
 import com.parse.ParseFile;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -49,15 +51,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        private ImageView ivProfilePicture;
         private TextView tvUsername;
         private ImageView ivPostImage;
         private TextView tvDescription;
+        private TextView tvTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivPostImage = itemView.findViewById(R.id.ivPostImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfilePicture = itemView.findViewById(R.id.ivProfilePicture);
+            tvTime = itemView.findViewById(R.id.tvTime);
 
             itemView.setOnClickListener(this);
         }
@@ -69,6 +75,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if(image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivPostImage);
             }
+
+            ParseFile profilePicture = (ParseFile) post.getUser().get("profilePicture");
+            if (profilePicture != null){
+                Glide.with(context).load(profilePicture.getUrl()).circleCrop().into(ivProfilePicture);
+            }
+            else {
+                Glide.with(context).load(R.drawable.default_pfp).circleCrop().into(ivProfilePicture);
+            }
+
+            Date createdAt = post.getCreatedAt();
+            String timeAgo = Post.calculateTimeAgo(createdAt);
+            tvTime.setText(timeAgo);
         }
 
         @Override

@@ -40,10 +40,6 @@ public class Post extends ParseObject {
         put(KEY_USER, user);
     }
 
-    public ParseFile getProfilePicture() { return getParseFile(KEY_PROFILE_PICTURE); }
-
-    public void setProfilePicture(ParseFile parseFile) { put(KEY_PROFILE_PICTURE, parseFile); }
-
     public static String calculateTimeAgo(Date createdAt) {
 
         int SECOND_MILLIS = 1000;

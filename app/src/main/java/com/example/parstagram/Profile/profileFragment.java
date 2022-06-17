@@ -61,7 +61,7 @@ public class profileFragment extends Fragment {
         rvGrid.setLayoutManager(gridLayoutManager);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
-        ParseFile profilePic = ParseUser.getCurrentUser().getParseFile("profilePicture");
+        ParseFile profilePic = (ParseFile) ParseUser.getCurrentUser().get("profilePicture");
         if (profilePic != null){
             Glide.with(getContext()).load(profilePic.getUrl()).circleCrop().into(ivProfilePic);
         }
