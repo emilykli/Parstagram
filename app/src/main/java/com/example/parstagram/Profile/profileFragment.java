@@ -20,6 +20,7 @@ import com.example.parstagram.Posting.Post;
 import com.example.parstagram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -60,7 +61,13 @@ public class profileFragment extends Fragment {
         rvGrid.setLayoutManager(gridLayoutManager);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
-        Glide.with(getContext()).load(R.drawable.default_pfp).circleCrop().into(ivProfilePic);
+        ParseFile profilePic = ParseUser.getCurrentUser().getParseFile("profilePicture");
+        if (profilePic != null){
+            Glide.with(getContext()).load(profilePic.getUrl()).circleCrop().into(ivProfilePic);
+        }
+        else {
+            Glide.with(getContext()).load(R.drawable.default_pfp).circleCrop().into(ivProfilePic);
+        }
         profileAdapter.notifyDataSetChanged();
         queryPosts();
     }

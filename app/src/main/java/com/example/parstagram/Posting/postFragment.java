@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.parstagram.R;
@@ -48,6 +49,8 @@ public class postFragment extends Fragment {
     private ImageView ivPostImage;
     private Button btnSubmit;
 
+    private ProgressBar pb;
+
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -69,6 +72,7 @@ public class postFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        pb = (ProgressBar) view.findViewById(R.id.pbLoading);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +95,9 @@ public class postFragment extends Fragment {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
+
+                pb.setVisibility(ProgressBar.VISIBLE);
+
                 savePost(description, currentUser, photoFile);
             }
         });
@@ -184,6 +191,7 @@ public class postFragment extends Fragment {
                 Log.i(TAG, "post save was successful");
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
+                pb.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
